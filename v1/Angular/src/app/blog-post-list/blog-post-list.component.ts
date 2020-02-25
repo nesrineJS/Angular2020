@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class BlogPostListComponent implements OnInit {
  //blogList:blogpost[];
+ id:string
  blogList$:Observable<blogpost[]>; // observable  sorte de push des information donc  il faut un pipe async dans le html
   constructor(private blogListService:BlogPostService) { }
 
@@ -23,5 +24,5 @@ export class BlogPostListComponent implements OnInit {
    this.blogList$=this.blogListService.getBlogList();
    // console.log(JSON.stringify(this.blogList$))
  }
-
+ 
 }

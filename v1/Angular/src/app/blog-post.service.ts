@@ -18,7 +18,18 @@ export class BlogPostService {
 return this.httpClient.get<blogpost>(`${this.baseUrl}${id}`)
 
   }
- 
+  deleteBlogById(id: string){
+    return this.httpClient.delete(`${this.baseUrl}${id}`)
+    
+      }
+    deleteMultiBlog(ids:string[]){
+       const ids$=ids.join(',');
+       console.log(`${this.baseUrl}?id$=${ids$}`)
+       return this.httpClient.delete(`${this.baseUrl}?id$=${ids$}`);
+
+
+
+    }
 
   
 }

@@ -1,1 +1,7 @@
-<p>admin works!</p>
+<mat-selection-list #blog>
+    <mat-list-option *ngFor="let blog of blogPost" [value]="blog._id" checkboxPosition='after'  >
+      {{blog.title}}
+    </mat-list-option>
+  </mat-selection-list>
+  <mat-card>  selected blogs :{{blog.selectedOptions.selected.length}}</mat-card>
+  <mat-card-actions > <button mat-button *ngIf="blog.selectedOptions.selected.length >0" color="primary"(click)="deleteBlog(blog.selectedOptions.selected)">Delete</button></mat-card-actions>
