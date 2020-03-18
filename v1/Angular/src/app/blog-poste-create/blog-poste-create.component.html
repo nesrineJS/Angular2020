@@ -1,0 +1,26 @@
+<mat-card>
+    <div class="example-container">
+        <form [formGroup]="Formulaire"  #FormReactive_="ngForm"(submit)="create(FormReactive_)">
+    
+        <mat-form-field>
+        <input matInput placeholder="Title" formControlName="title" required>
+    </mat-form-field> <br>
+        <mat-form-field>
+        <input matInput placeholder="SubTilte" formControlName="subtilte" required>
+    </mat-form-field><br>
+        <mat-form-field>
+        <textarea matInput placeholder="Content" formControlName="content" required> </textarea>
+    </mat-form-field> <br>
+    
+        <label for="image">choose image</label> <br>
+        <input type="file" name="image" id="image" formControlName="image" > <br>
+        <button mat-button  type="button" (click)="upload()"> Upload </button> <br>
+
+   
+     <button mat-button  type="submit"> Create</button>
+
+    
+</form>
+</div>
+
+</mat-card>

@@ -9,21 +9,25 @@ import { BlogPostListComponent } from './blog-post-list/blog-post-list.component
 import {  HttpClientModule } from '@angular/common/http';
 import {MaterialModule} from './material.module';
 import { ErrorComponent } from './error/error.component';
-import { AdminComponent } from './admin/admin.component'
+import { AdminComponent } from './admin/admin.component';
+import { BlogPosteCreateComponent } from './blog-poste-create/blog-poste-create.component';
+import   {FormsModule,ReactiveFormsModule} from '@angular/forms'
 @NgModule({
   declarations: [
     AppComponent,
     BlogPostComponent,
     BlogPostListComponent,
     ErrorComponent,
-    AdminComponent
+    AdminComponent,
+    BlogPosteCreateComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule,FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

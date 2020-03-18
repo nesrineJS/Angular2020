@@ -16,6 +16,7 @@ export class AdminComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllBlogPosts();
+    this.blogPostService.handleBlocPostCreate().subscribe(res=>this.refresh(res)),err=>this.handleError(err)
   }
 /* getAllBlogPosts(){
    this.blogPost$=this.blogPostService.getBlogList();
