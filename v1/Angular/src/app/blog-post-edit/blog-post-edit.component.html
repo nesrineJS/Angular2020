@@ -1,0 +1,29 @@
+<mat-card *ngIf="blogPost as bp ;else loading">
+    
+        <form [formGroup]="editFormulaire"  #FormDirective="ngForm"(submit)="updateBlogPost(FormDirective)">
+            <div class="example-container">
+        <mat-form-field>
+        <input matInput placeholder="Title"  formControlName="title"[value]="bp.title" [(ngModel)]="bp.title" >
+       </mat-form-field> <br>
+       <mat-form-field>
+       <input matInput placeholder="subtitle"  formControlName="subtitle"[value]="bp.subtitle" [(ngModel)]="bp.subtitle" >
+    </mat-form-field> <br>
+     
+        <mat-form-field>
+        <textarea matInput placeholder="Content" formControlName="content"[value]="bp.content" [(ngModel)]="bp.content"> </textarea>
+        </mat-form-field> <br>
+    
+        <img mat-card-image [src]="pathImage+bp.image" alt="{{bp.title}}">
+        <input type="file"  name="image" id="image" > <br>
+        <button mat-button  type="button" (click)="UploadImage()"> Upload Image </button> <br> 
+
+        <button mat-button  type="submit" [disabled]="!FormDirective.form.valid"> Update </button> <br>
+
+     </div>
+     </form>
+     
+
+</mat-card>
+<ng-template #loading>
+    <h1>Loading .....</h1>
+</ng-template>

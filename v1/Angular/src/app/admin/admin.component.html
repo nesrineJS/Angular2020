@@ -1,3 +1,13 @@
+
+
+
+
+<mat-card>
+  <button mat-button (click)="logout()">logout</button>
+  {{ errorFromServer }}
+</mat-card>
+
+
 <mat-selection-list #blog>
     <mat-list-option *ngFor="let blog of blogPost" [value]="blog._id" checkboxPosition='after'  >
       {{blog.title}}

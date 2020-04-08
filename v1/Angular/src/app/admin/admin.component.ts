@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { blogpost } from '../models/blogPost';
 import { BlogPostService } from '../blog-post.service';
+import { AuthService } from '../models/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -12,9 +14,13 @@ export class AdminComponent implements OnInit {
   //blogPost$:Observable<blogpost[]>;
   isSelected=true;
   blogPost:blogpost[];
-  constructor( private blogPostService:BlogPostService) { }
+  errorFromServer="";
+  constructor( private blogPostService:BlogPostService, private authService:AuthService , private router :Router) { }
 
   ngOnInit(): void {
+    if(this.authService.isAuthenticated== true){
+      this.router.navigate(['/admin'])
+    }
     this.getAllBlogPosts();
     this.blogPostService.handleBlocPostCreate().subscribe(res=>this.refresh(res)),err=>this.handleError(err)
   }
@@ -62,7 +68,13 @@ deleteBlog(selectedOptions){
     });
     }
     handleError(error){
+      this.errorFromServer=`error : ${error.staus}-${error.statusText}`
       console.error(error)
     }
-  
+    logout(){
+      this.authService.logout().subscribe(res=>{console.log('logout!') ; this.router.navigate['']}, err=> this.handleError(err)
+
+      )
+
+    }
 }
